@@ -22,15 +22,15 @@ router.get('/callback', async (req, res) => {
 
         const userData = { user_id: userId, name: userId.replace("_", " "), gender: userGender, topArtists, topTracks };
         
-        // Save or update the user data in the database
+
         const savedUser = await User.findOneAndUpdate({ user_id: userId }, userData, { upsert: true, new: true });
 
-        // After saving the user data, call the matchmaking service
+
         const matchmakingService = new MatchmakingService();
         const bestMatch = await matchmakingService.findBestMatch(savedUser);
 
         if (bestMatch) {
-            // Calculate common artists and common tracks
+
             const commonArtists = bestMatch.matched_user.topArtists.filter(artist =>
                 savedUser.topArtists.includes(artist)
             );
@@ -39,7 +39,7 @@ router.get('/callback', async (req, res) => {
                 savedUser.topTracks.includes(track)
             );
 
-            // Pass commonArtists and commonTracks to the template
+
             res.render('match', { 
                 matchedUser: bestMatch.matched_user, 
                 matchScore: bestMatch.match_score, 
