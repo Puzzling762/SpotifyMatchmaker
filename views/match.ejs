@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matchmaking Result</title>
+</head>
+<body>
+    <h1>Matchmaking Result</h1>
+
+    <h2>Matched User: <%= matchedUser.name %></h2>
+    <p>Gender: <%= matchedUser.gender %></p>
+    <p>Match Score: <%= matchScore.toFixed(2) %> %</p>
+
+    <h3>Common Artists:</h3>
+    <% if (commonArtists && commonArtists.length > 0) { %>
+        <ul>
+            <% commonArtists.forEach(artist => { %>
+                <li><%= artist %></li>
+            <% }); %>
+        </ul>
+    <% } else { %>
+        <p>No common artists found.</p>
+    <% } %>
+
+    <h3>Common Tracks:</h3>
+    <% if (commonTracks && commonTracks.length > 0) { %>
+        <ul>
+            <% commonTracks.forEach(track => { %>
+                <li><%= track %></li>
+            <% }); %>
+        </ul>
+    <% } else { %>
+        <p>No common tracks found.</p>
+    <% } %>
+</body>
+</html>

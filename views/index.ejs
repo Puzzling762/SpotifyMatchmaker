@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spotify Matchmaking Registration</title>
+</head>
+<body>
+    <h1>Register for Spotify Matchmaking</h1>
+    <form action="/spotify/register" method="post">
+        <label for="name">Name:</label>
+        <input type="text" name="name" placeholder="Enter your name" required>
+
+        <label for="gender">Gender:</label>
+        <select name="gender" required>
+            <option value="">Select Gender</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+            <option value="Other">Other</option>
+        </select>
+
+        <button type="submit">Register and Connect with Spotify</button>
+    </form>
+</body>
+</html>
