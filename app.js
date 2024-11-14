@@ -14,11 +14,10 @@ const app = express();
 app.set('view engine', 'ejs');
 app.use(express.urlencoded({ extended: true }));
 
-const mongoUri = process.env.MONGO_URI || "mongodb+srv://Puzzl1ng:120617@spotify-backend.7vyj2.mongodb.net/users?retryWrites=true&w=majority&appName=Spotify-backend";
-
-mongoose.connect(mongoUri, { useNewUrlParser: true, useUnifiedTopology: true })
-    .then(() => console.log("Connected to MongoDB Atlas"))
-    .catch(error => console.error("MongoDB connection error:", error));
+// MongoDB connection
+mongoose.connect(process.env.MONGO_URI)
+    .then(() => console.log('Connected to MongoDB'))
+    .catch((error) => console.error('MongoDB connection error:', error));
 
 // Configure session to use MongoDB for storing sessions
 app.use(session({
