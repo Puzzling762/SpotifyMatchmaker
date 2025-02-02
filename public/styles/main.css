@@ -1,0 +1,51 @@
+/* Apply to the entire page */
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #1DB954, #191414);
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+}
+
+/* Center content */
+h1 {
+    font-size: 2rem;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+form {
+    background: rgba(0, 0, 0, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+}
+
+/* Input fields */
+input, select {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border-radius: 5px;
+    border: none;
+    background: #282828;
+    color: white;
+}
+
+/* Button */
+button {
+    background: #1DB954;
+    color: black;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+button:hover {
+    background: #14833b;
+    transform: scale(1.05);
+}

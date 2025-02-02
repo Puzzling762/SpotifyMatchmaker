@@ -4,34 +4,173 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Matchmaking Result</title>
+    <link rel="stylesheet" href="/styles/main.css">
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(to bottom right, #e0f7fa, #80deea);
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            overflow-x: hidden;
+        }
+
+        body {
+            flex-direction: column;
+            min-height: 100vh;
+            padding: 20px;
+            text-align: center;
+            overflow-y: auto;
+        }
+
+        h1 {
+            color: #388e3c;
+            font-size: 3rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            color: #555;
+            font-size: 1.8rem;
+            margin-bottom: 30px;
+        }
+
+        .match-details {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+            text-align: left;
+            max-width: 900px;
+            width: 100%;
+            margin-bottom: 20px;
+            overflow-y: auto;
+            max-height: 80vh;
+            padding-right: 15px;
+            box-sizing: border-box;
+        }
+
+        .match-details h3 {
+            color: #388e3c;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        .match-details p {
+            color: #333;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        .match-details ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .match-details ul li {
+            background-color: #dcedc8;
+            padding: 12px 18px;
+            margin: 12px 0;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            color: #333;
+            transition: background-color 0.3s ease;
+        }
+
+        .match-details ul li:hover {
+            background-color: #c5e1a5;
+        }
+
+        .back-btn {
+            display: inline-block;
+            margin-top: 40px;
+            padding: 15px 25px;
+            background-color: #4CAF50;
+            color: white;
+            font-size: 1.2rem;
+            text-decoration: none;
+            border-radius: 50px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s ease;
+        }
+
+        .back-btn:hover {
+            background-color: #388e3c;
+        }
+
+        .celebration-icon {
+            font-size: 4rem;
+            color: #ff9800;
+            margin-top: 30px;
+        }
+
+        .no-match-message {
+            color: #f44336;
+            font-size: 1.5rem;
+            margin-top: 20px;
+        }
+
+        /* Scrollbar Styling */
+        .match-details::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .match-details::-webkit-scrollbar-thumb {
+            background-color: #888;
+            border-radius: 10px;
+        }
+
+        .match-details::-webkit-scrollbar-thumb:hover {
+            background-color: #555;
+        }
+    </style>
 </head>
 <body>
-    <h1>Matchmaking Result</h1>
+    <h1>🎉 You Found Your Music Soulmate!</h1>
+    <h2>What a perfect match!</h2>
 
-    <h2>Matched User: <%= matchedUser.name %></h2>
-    <p>Gender: <%= matchedUser.gender %></p>
-    <p>Match Score: <%= matchScore.toFixed(2) %></p>
+    <div class="match-details">
+        <h3>Matched User: <%= matchedUser.name %></h3>
+        <p>Gender: <%= matchedUser.gender %></p>
+        <p>Match Score: <%= matchScore.toFixed(2) %></p>
 
-    <h3>Common Artists:</h3>
-    <% if (commonArtists && commonArtists.length > 0) { %>
-        <ul>
-            <% commonArtists.forEach(artist => { %>
-                <li><%= artist %></li>
-            <% }); %>
-        </ul>
-    <% } else { %>
-        <p>No common artists found.</p>
-    <% } %>
+        <h3>Common Artists:</h3>
+        <% if (commonArtists && commonArtists.length > 0) { %>
+            <ul>
+                <% commonArtists.forEach(artist => { %>
+                    <li><%= artist %></li>
+                <% }); %>
+            </ul>
+        <% } else { %>
+            <p>No common artists found, but you’ll discover more together!</p>
+        <% } %>
 
-    <h3>Common Tracks:</h3>
-    <% if (commonTracks && commonTracks.length > 0) { %>
-        <ul>
-            <% commonTracks.forEach(track => { %>
-                <li><%= track %></li>
-            <% }); %>
-        </ul>
-    <% } else { %>
-        <p>No common tracks found.</p>
+        <h3>Common Tracks:</h3>
+        <% if (commonTracks && commonTracks.length > 0) { %>
+            <ul>
+                <% commonTracks.forEach(track => { %>
+                    <li><%= track %></li>
+                <% }); %>
+            </ul>
+        <% } else { %>
+            <p>No common tracks found, but don’t worry, there’s plenty more to explore!</p>
+        <% } %>
+
+        <a href="/" class="back-btn">Back to Home</a>
+    </div>
+
+    <div class="celebration-icon">🎶</div>
+
+    <% if (commonTracks.length === 0 && commonArtists.length === 0) { %>
+        <div class="no-match-message">
+            We couldn't find a match for you at this time. Please try again later!
+        </div>
     <% } %>
 </body>
 </html>

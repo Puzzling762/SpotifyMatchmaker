@@ -4,9 +4,79 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>No Match Found</title>
+    <link rel="stylesheet" href="/styles/main.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #fce4ec;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 30px;
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        h1 {
+            color: #f44336;
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+        h2 {
+            color: #555;
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+        }
+        .no-match-details {
+            background-color: #ffe0e0;
+            padding: 25px;
+            border-radius: 10px;
+            margin-top: 30px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+        }
+        .no-match-details p {
+            color: #333;
+            font-size: 1.2rem;
+        }
+        .back-btn {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 15px 25px;
+            background-color: #f44336;
+            color: white;
+            font-size: 1.2rem;
+            text-decoration: none;
+            border-radius: 50px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s ease;
+        }
+        .back-btn:hover {
+            background-color: #e53935;
+        }
+        .encouraging-icon {
+            font-size: 4rem;
+            color: #ff4081;
+            margin-top: 20px;
+        }
+    </style>
 </head>
 <body>
-    <h1>No Match Found</h1>
-    <p>We couldn't find a match for you at this time. Please try again later!</p>
+    <div class="container">
+        <h1>😞 Oops, No Match Found</h1>
+        <h2>It looks like we couldn't find a match for you this time, but don’t give up!</h2>
+
+        <div class="no-match-details">
+            <p>Keep listening to your favorite tunes and we’ll try again soon!</p>
+            <p>There are plenty of amazing matches waiting for you!</p>
+        </div>
+
+        <a href="/" class="back-btn">Back to Home</a>
+
+        <div class="encouraging-icon">🎵</div>
+    </div>
 </body>
 </html>
