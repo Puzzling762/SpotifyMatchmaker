@@ -132,42 +132,53 @@
     </style>
 </head>
 <body>
-    <h1>🎉 You Found Your Music Soulmate!</h1>
-    <h2>What a perfect match!</h2>
+    <% if (matchedUser) { %>
+        <h1>🎉 You Found Your Music Soulmate!</h1>
+        <h2>What a perfect match!</h2>
 
-    <div class="match-details">
-        <h3>Matched User: <%= matchedUser.name %></h3>
-        <p>Gender: <%= matchedUser.gender %></p>
-        <p>Match Score: <%= matchScore.toFixed(2) %></p>
+        <div class="match-details">
+            <h3>Matched User: <%= matchedUser.name %></h3>
+            <p>Gender: <%= matchedUser.gender %></p>
 
-        <h3>Common Artists:</h3>
-        <% if (commonArtists && commonArtists.length > 0) { %>
-            <ul>
-                <% commonArtists.forEach(artist => { %>
-                    <li><%= artist %></li>
-                <% }); %>
-            </ul>
-        <% } else { %>
-            <p>No common artists found, but you’ll discover more together!</p>
-        <% } %>
+            <!-- Match Score with percentage formatting -->
+            <p><strong>Match Score:</strong> 
+                <% if (matchScore !== "No Score Available" && matchScore !== undefined) { %>
+                    <%= matchScore %>  <!-- Display match score if available -->
+                <% } else { %>
+                    No Score Available  <!-- Display this if no score is available -->
+                <% } %>
+            </p>
 
-        <h3>Common Tracks:</h3>
-        <% if (commonTracks && commonTracks.length > 0) { %>
-            <ul>
-                <% commonTracks.forEach(track => { %>
-                    <li><%= track %></li>
-                <% }); %>
-            </ul>
-        <% } else { %>
-            <p>No common tracks found, but don’t worry, there’s plenty more to explore!</p>
-        <% } %>
+            <p><strong>Match Category:</strong> <%= matchCategory || "No Match" %></p>
 
-        <a href="/" class="back-btn">Back to Home</a>
-    </div>
+            <h3>Common Artists:</h3>
+            <% if (commonArtists && commonArtists.length > 0) { %>
+                <ul>
+                    <% commonArtists.forEach(artist => { %>
+                        <li><%= artist %></li>
+                    <% }); %>
+                </ul>
+            <% } else { %>
+                <p>No common artists found, but you’ll discover more together!</p>
+            <% } %>
 
-    <div class="celebration-icon">🎶</div>
+            <h3>Common Tracks:</h3>
+            <% if (commonTracks && commonTracks.length > 0) { %>
+                <ul>
+                    <% commonTracks.forEach(track => { %>
+                        <li><%= track %></li>
+                    <% }); %>
+                </ul>
+            <% } else { %>
+                <p>No common tracks found, but don’t worry, there’s plenty more to explore!</p>
+            <% } %>
 
-    <% if (commonTracks.length === 0 && commonArtists.length === 0) { %>
+            <a href="/" class="back-btn">Back to Home</a>
+        </div>
+
+        <div class="celebration-icon">🎶</div>
+    <% } else { %>
+        <h1>😞 No Match Found</h1>
         <div class="no-match-message">
             We couldn't find a match for you at this time. Please try again later!
         </div>
